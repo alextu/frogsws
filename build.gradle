@@ -65,6 +65,6 @@ task wrapper(type: Wrapper) {
 }
 
 String addBuildNumberFromCI(String version) {
-	def buildNumber = System.getenv().BUILD_NUMBER
+	def buildNumber = project.hasProperty('buildNumber') ? project.ext.buildNumber : System.getenv().BUILD_NUMBER
 	return buildNumber ? version + "-" + buildNumber : version
 }
